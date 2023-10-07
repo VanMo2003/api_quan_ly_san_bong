@@ -18,12 +18,12 @@ public class UserController {
 
     @GetMapping("/{username}")
     public ResponseEntity<Object> getUserByUsername(@PathVariable String username){
-        Optional<User> user = repository.findById(username);
+        Optional<User> userFound = repository.findById(username);
 
-        if (user.isPresent()){
-            return new ResponseEntity<>(user, HttpStatus.OK);
+        if (userFound.isPresent()){
+            return new ResponseEntity<>(userFound, HttpStatus.OK);
         }else {
-            return new ResponseEntity<>("Username not exists", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("không tìm thấy tài khoản", HttpStatus.NOT_FOUND);
         }
     }
 

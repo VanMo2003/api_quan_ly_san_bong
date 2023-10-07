@@ -1,8 +1,8 @@
 package com.example.football_field_management.controller;
 
-import com.example.football_field_management.model.FootballField;
+import com.example.football_field_management.model.ManageInformation;
 import com.example.football_field_management.model.UserData;
-import com.example.football_field_management.repositories.FootballFieldRepository;
+import com.example.football_field_management.repositories.ManageInformationRepository;
 import com.example.football_field_management.repositories.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +20,8 @@ public class UserDataController {
 
     @Autowired
     private UserDataRepository repositoryUserData;
-
-
     @Autowired
-    private FootballFieldRepository repositoryFootballField;
+    private ManageInformationRepository manageInformationRepository;
 
 
     @GetMapping("")
@@ -33,10 +31,10 @@ public class UserDataController {
 
     @PostMapping("")
     public ResponseEntity<Object> insertUserData(@RequestBody UserData userData){
-        Optional<FootballField> footballFieldFound = repositoryFootballField.findById(userData.getNameFootballField());
+        Optional<ManageInformation> manageInformationFound = manageInformationRepository.findById(userData.getNameFootballField());
 
-        if (footballFieldFound.isPresent()) {
-            if (footballFieldFound.get().getTotalYards() >= userData.getNumberYard()) {
+        if (manageInformationFound.isPresent()) {
+            if (manageInformationFound.get().getTotalYards() >= userData.getNumberYard()) {
                 List<UserData> userDataList = repositoryUserData.findByNameFootballField(userData.getNameFootballField());
                AtomicBoolean checkUserData = new AtomicBoolean(false);
                 userDataList.forEach(userData1 -> {
@@ -52,7 +50,7 @@ public class UserDataController {
                 }
 
             }else {
-                return new ResponseEntity<>("The Football Field has only " + footballFieldFound.get().getTotalYards() + " yard", HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>("The Football Field has only " + manageInformationFound.get().getTotalYards() + " yard", HttpStatus.NOT_FOUND);
             }
         }else {
             return new ResponseEntity<>("Name Football Field not exists", HttpStatus.NOT_FOUND);

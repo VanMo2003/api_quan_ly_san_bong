@@ -1,16 +1,29 @@
 package com.example.football_field_management.model;
 
-public class AccountInformation {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "manage_information")
+public class ManageInformation {
+    @Id
+    @Column(name = "username")
     private String username;
+    @Column(name = "permission")
     private boolean permission;
+    @Column(name = "name_football_field")
     private String nameFootballField;
+    @Column(name = "name_manage")
     private String nameManage;
+    @Column(name = "total_yards")
     private int totalYards;
 
-    public AccountInformation() {
+    public ManageInformation() {
     }
 
-    public AccountInformation(String username, boolean permission, String nameFootballField, String nameManage, int totalYards) {
+    public ManageInformation(String username, boolean permission, String nameFootballField, String nameManage, int totalYards) {
         this.username = username;
         this.permission = permission;
         this.nameFootballField = nameFootballField;
@@ -60,7 +73,7 @@ public class AccountInformation {
 
     @Override
     public String toString() {
-        return "AccountInformation{" +
+        return "ManageInformation{" +
                 "username='" + username + '\'' +
                 ", permission=" + permission +
                 ", nameFootballField='" + nameFootballField + '\'' +
