@@ -25,7 +25,7 @@ public class AccountController {
             return new ResponseEntity<>("tài khoản hoặc mật khẩu không chính xác", HttpStatus.NOT_FOUND);
         } else {
             if (account.getPassword().equals(accountFound.get().getPassword()))
-                return new ResponseEntity<>(true, HttpStatus.OK);
+                return new ResponseEntity<>(accountFound.get().isPermission(), HttpStatus.OK);
             else {
                 return new ResponseEntity<>("tài khoản hoặc mật khẩu không chính xác", HttpStatus.BAD_REQUEST);
             }

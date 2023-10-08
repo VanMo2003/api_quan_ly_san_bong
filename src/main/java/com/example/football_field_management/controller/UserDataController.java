@@ -29,6 +29,17 @@ public class UserDataController {
         return new ResponseEntity<>(repositoryUserData.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/{nameFootballField}")
+    ResponseEntity<Object> getUserDataByNameFootballFIeld(@PathVariable String nameFootballField){
+        List<UserData> userDataList = repositoryUserData.findByNameFootballField(nameFootballField);
+
+        if (userDataList.isEmpty()){
+            return new ResponseEntity<>("không tìm thấy sân", HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(userDataList, HttpStatus.OK);
+        }
+    }
+
     @PostMapping("")
     public ResponseEntity<Object> insertUserData(@RequestBody UserData userData){
         Optional<ManageInformation> manageInformationFound = manageInformationRepository.findById(userData.getNameFootballField());

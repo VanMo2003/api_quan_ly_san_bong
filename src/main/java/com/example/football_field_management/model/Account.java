@@ -15,13 +15,16 @@ public class Account {
     private String userName;
     @Column(name = "password")
     private String password;
+    @Column(name = "permission")
+    private boolean permission;
 
     public Account() {
     }
 
-    public Account(String userName, String password) {
+    public Account(String userName, String password, boolean permission) {
         this.userName = userName;
         this.password = password;
+        this.permission = permission;
     }
 
     public String getUserName() {
@@ -40,12 +43,20 @@ public class Account {
         this.password = password;
     }
 
+    public boolean isPermission() {
+        return permission;
+    }
+
+    public void setPermission(boolean permission) {
+        this.permission = permission;
+    }
 
     @Override
     public String toString() {
         return "Account{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", permission=" + permission +
                 '}';
     }
 

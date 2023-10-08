@@ -33,7 +33,7 @@ public class FootballFieldDataController {
         }else {
             List<YardData> yardDataList = new ArrayList<>();
 
-            for (int i = 1; i <= manageInformationRepository.findById(nameFootballField).get().getTotalYards(); i++) {
+            for (int i = 1; i <= manageInformationRepository.findByNameFootballField(nameFootballField).getTotalYards(); i++) {
                 YardData yardData = new YardData();
                 List<UserInformation> userInformationList = new ArrayList<>();
 
@@ -56,13 +56,13 @@ public class FootballFieldDataController {
     }
 
     @GetMapping("/{nameFootballField}/{numberYard}")
-    public ResponseEntity<Object> getAllFootballFieldData(@PathVariable String nameFootballField, @PathVariable int numberYard){
+    public ResponseEntity<Object> getAllYardData(@PathVariable String nameFootballField, @PathVariable int numberYard){
         List<UserData> userDataList = repository.findByNameFootballField(nameFootballField.trim());
 
         if (userDataList.isEmpty()){
             return new ResponseEntity<>("không tìm thấy tên sân bóng", HttpStatus.NOT_FOUND);
         }else {
-            int totalYards = manageInformationRepository.findById(nameFootballField).get().getTotalYards();
+            int totalYards = manageInformationRepository.findByNameFootballField(nameFootballField).getTotalYards();
             if (totalYards < numberYard){
                 return new ResponseEntity<>("Sân bóng chỉ có " +totalYards +" sân", HttpStatus.BAD_REQUEST);
             }

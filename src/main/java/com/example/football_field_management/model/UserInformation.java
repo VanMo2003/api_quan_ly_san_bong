@@ -3,13 +3,13 @@ package com.example.football_field_management.model;
 public class UserInformation {
     private String nameUser;
     private String phoneNumber;
-    private String timeSlot;
+    private int timeSlot;
     private String dataToday;
 
     public UserInformation() {
     }
 
-    public UserInformation(String nameUser, String phoneNumber, String timeSlot, String dataToday) {
+    public UserInformation(String nameUser, String phoneNumber, int timeSlot, String dataToday) {
         this.nameUser = nameUser;
         this.phoneNumber = phoneNumber;
         this.timeSlot = timeSlot;
@@ -32,11 +32,11 @@ public class UserInformation {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getTimeSlot() {
+    public int getTimeSlot() {
         return timeSlot;
     }
 
-    public void setTimeSlot(String timeSlot) {
+    public void setTimeSlot(int timeSlot) {
         this.timeSlot = timeSlot;
     }
 

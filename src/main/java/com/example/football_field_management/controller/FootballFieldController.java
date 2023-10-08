@@ -35,6 +35,7 @@ public class FootballFieldController {
 
             ManageInformation manageInformation = new ManageInformation();
             manageInformation.setUsername(manageInformationFound.get().getUsername());
+            manageInformation.setPermission(manageInformationFound.get().isPermission());
             manageInformation.setNameFootballField(manageInformationFound.get().getNameFootballField());
             manageInformation.setNameManage(manageInformationFound.get().getNameManage());
             manageInformation.setTotalYards(manageInformationFound.get().getTotalYards());

@@ -14,11 +14,11 @@ public class FootballFieldData {
 	@Column(name = "name_football_field")
 	String nameFootballField;
 	@Column(name = "time_slot")
-	String timeSlot;
+	int timeSlot;
 	@Column(name = "price")
 	String price;
 
-	public FootballFieldData(String nameFootballField, String timeSlot, String price) {
+	public FootballFieldData(String nameFootballField, int timeSlot, String price) {
 		this.nameFootballField = nameFootballField;
 		this.timeSlot = timeSlot;
 		this.price = price;
@@ -32,11 +32,11 @@ public class FootballFieldData {
 		this.nameFootballField = nameFootballField;
 	}
 
-	public String getTimeSlot() {
+	public int getTimeSlot() {
 		return timeSlot;
 	}
 
-	public void setTimeSlot(String timeSlot) {
+	public void setTimeSlot(int timeSlot) {
 		this.timeSlot = timeSlot;
 	}
 

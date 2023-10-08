@@ -4,13 +4,13 @@ import java.util.Objects;
 public class YardInformation {
 	String nameUser;
 	String phoneNumber;
-	String timeSlot;
+	int timeSlot;
 	String dataToday;
 	public YardInformation(){
 
 	}
 
-	public YardInformation(String nameUser, String phoneNumber, String timeSlot, String dataToday) {
+	public YardInformation(String nameUser, String phoneNumber, int timeSlot, String dataToday) {
 		this.nameUser = nameUser;
 		this.phoneNumber = phoneNumber;
 		this.timeSlot = timeSlot;
@@ -33,11 +33,11 @@ public class YardInformation {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getTimeSlot() {
+	public int getTimeSlot() {
 		return timeSlot;
 	}
 
-	public void setTimeSlot(String timeSlot) {
+	public void setTimeSlot(int timeSlot) {
 		this.timeSlot = timeSlot;
 	}
 

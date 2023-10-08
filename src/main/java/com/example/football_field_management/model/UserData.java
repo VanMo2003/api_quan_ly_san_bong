@@ -20,14 +20,14 @@ public class UserData {
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "time_slot")
-    private String timeSlot;
+    private int timeSlot;
     @Column(name = "data_today")
     private String dataToday;
 
     public UserData() {
     }
 
-    public UserData(String nameFootballField, int numberYard, String nameUser, String phoneNumber, String timeSlot, String dataToday) {
+    public UserData(String nameFootballField, int numberYard, String nameUser, String phoneNumber, int timeSlot, String dataToday) {
         this.nameFootballField = nameFootballField;
         this.numberYard = numberYard;
         this.nameUser = nameUser;
@@ -68,11 +68,11 @@ public class UserData {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getTimeSlot() {
+    public int getTimeSlot() {
         return timeSlot;
     }
 
-    public void setTimeSlot(String timeSlot) {
+    public void setTimeSlot(int timeSlot) {
         this.timeSlot = timeSlot;
     }
 
@@ -99,13 +99,12 @@ public class UserData {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserData)) return false;
-        UserData userData = (UserData) o;
-        return getNumberYard() == userData.getNumberYard() && getNameFootballField().equals(userData.getNameFootballField()) && getTimeSlot().equals(userData.getTimeSlot()) && getDataToday().equals(userData.getDataToday());
+        if (!(o instanceof UserData userData)) return false;
+        return getNumberYard() == userData.getNumberYard() && getTimeSlot() == userData.getTimeSlot() && Objects.equals(id, userData.id) && Objects.equals(getNameFootballField(), userData.getNameFootballField()) && Objects.equals(getNameUser(), userData.getNameUser()) && Objects.equals(getPhoneNumber(), userData.getPhoneNumber()) && Objects.equals(getDataToday(), userData.getDataToday());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNameFootballField(), getNumberYard(), getTimeSlot(), getDataToday());
+        return Objects.hash(id, getNameFootballField(), getNumberYard(), getNameUser(), getPhoneNumber(), getTimeSlot(), getDataToday());
     }
 }
