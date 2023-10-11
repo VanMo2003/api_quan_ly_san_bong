@@ -9,8 +9,8 @@ import jakarta.persistence.Table;
 @Table(name = "manage_information")
 public class ManageInformation {
     @Id
-    @Column(name = "username")
-    private String username;
+    @Column(name = "email")
+    private String email;
     @Column(name = "permission")
     private boolean permission;
     @Column(name = "name_football_field")
@@ -24,19 +24,19 @@ public class ManageInformation {
     }
 
     public ManageInformation(String username, boolean permission, String nameFootballField, String nameManage, int totalYards) {
-        this.username = username;
+        this.email = username;
         this.permission = permission;
         this.nameFootballField = nameFootballField;
         this.nameManage = nameManage;
         this.totalYards = totalYards;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String username) {
+        this.email = username;
     }
 
     public boolean isPermission() {
@@ -74,7 +74,7 @@ public class ManageInformation {
     @Override
     public String toString() {
         return "ManageInformation{" +
-                "username='" + username + '\'' +
+                "username='" + email + '\'' +
                 ", permission=" + permission +
                 ", nameFootballField='" + nameFootballField + '\'' +
                 ", nameManage='" + nameManage + '\'' +

@@ -5,11 +5,8 @@ import com.example.football_field_management.repositories.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StreamUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -28,9 +25,6 @@ public class RevenueController {
 	LocalDateTime now = LocalDateTime.now();
 
 	Calendar calendar = Calendar.getInstance();
-
-
-
 
 	@GetMapping("/revenue/{nameFootballField}")
 	ResponseEntity<Object> getAllRevenue(@PathVariable String nameFootballField){
@@ -58,11 +52,9 @@ public class RevenueController {
 
 		LocalDateTime firstDayOfWeek = now.minusDays(calendar.get(Calendar.DAY_OF_WEEK) - 2);
 
-
 		String revenueOfWeek = "";
 
 		for (int i=0;i<=6;i++){
-			firstDayOfWeek = firstDayOfWeek.plusDays(i);
 			Optional<Double> sum = userDataRepository.getRevenueByToDay(nameFootballField, dtf.format(firstDayOfWeek));
 			if (i==0){
 				if (!sum.isPresent()) {
@@ -77,6 +69,7 @@ public class RevenueController {
 					revenueOfWeek = revenueOfWeek + "-" + sum.get();
 				}
 			}
+			firstDayOfWeek = firstDayOfWeek.plusDays(1);
 		}
 		if (revenueOfWeek.equals(""))
 			return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
@@ -84,11 +77,10 @@ public class RevenueController {
 			return new ResponseEntity<>(revenueOfWeek, HttpStatus.NOT_FOUND);
 	}
 
-	@GetMapping("/revenueOfMonth/{nameFootballField}")
-	ResponseEntity<Object> getRevenueOfMonth(@PathVariable String nameFootballField){
-
-		System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
-
-		return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
-	}
+//	@GetMapping("/revenueOfMonth/{nameFootballField}")
+//	ResponseEntity<Object> getRevenueOfMonth(@PathVariable String nameFootballField){
+//
+//
+//		return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+//	}
 }

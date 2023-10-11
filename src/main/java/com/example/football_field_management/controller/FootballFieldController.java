@@ -34,7 +34,7 @@ public class FootballFieldController {
         if (manageInformationFound.isPresent()){
 
             ManageInformation manageInformation = new ManageInformation();
-            manageInformation.setUsername(manageInformationFound.get().getUsername());
+            manageInformation.setEmail(manageInformationFound.get().getEmail());
             manageInformation.setPermission(manageInformationFound.get().isPermission());
             manageInformation.setNameFootballField(manageInformationFound.get().getNameFootballField());
             manageInformation.setNameManage(manageInformationFound.get().getNameManage());

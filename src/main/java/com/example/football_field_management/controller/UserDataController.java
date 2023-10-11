@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 @CrossOrigin
@@ -22,9 +23,18 @@ public class UserDataController {
     private ManageInformationRepository manageInformationRepository;
 
 
-    @GetMapping("")
-    ResponseEntity<Object> getAllUserData(){
-        return new ResponseEntity<>(repositoryUserData.findAll(), HttpStatus.OK);
+    @PostMapping("")
+    ResponseEntity<Object> getUserData(@RequestBody UserData userData){
+        System.out.println(userData);
+        List<UserData> userDataListFound = repositoryUserData.findByNameFootballField(userData.getNameFootballField());
+        AtomicReference<UserData> userDataFound = new AtomicReference<>(new UserData());
+        userDataListFound.forEach(userDataIndex -> {
+            if (userDataIndex.equals(userData)){
+                userDataFound.set(userDataIndex);
+            }
+        });
+        System.out.println(userDataFound);
+        return new ResponseEntity<>(userDataFound, HttpStatus.OK);
     }
 
     @GetMapping("/{nameFootballField}/{selectedTime}")
@@ -42,7 +52,7 @@ public class UserDataController {
     }
 
 
-    @PostMapping("")
+    @PostMapping("/insert")
     public ResponseEntity<Object> insertUserData(@RequestBody UserData userData){
 
         return new ResponseEntity<>(repositoryUserData.save(userData), HttpStatus.OK);

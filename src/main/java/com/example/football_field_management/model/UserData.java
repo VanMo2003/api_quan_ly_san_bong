@@ -122,11 +122,11 @@ public class UserData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserData userData)) return false;
-        return getNumberYard() == userData.getNumberYard() && getTimeSlot() == userData.getTimeSlot() && Double.compare(userData.getPrice(), getPrice()) == 0 && Objects.equals(getId(), userData.getId()) && Objects.equals(getNameFootballField(), userData.getNameFootballField()) && Objects.equals(getNameUser(), userData.getNameUser()) && Objects.equals(getPhoneNumber(), userData.getPhoneNumber()) && Objects.equals(getSelectedDay(), userData.getSelectedDay());
+        return getNumberYard() == userData.getNumberYard() && getTimeSlot() == userData.getTimeSlot() && Objects.equals(getNameFootballField(), userData.getNameFootballField()) && Objects.equals(getSelectedDay(), userData.getSelectedDay());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNameFootballField(), getNumberYard(), getNameUser(), getPhoneNumber(), getTimeSlot(), getSelectedDay(), getPrice());
+        return Objects.hash(getNameFootballField(), getNumberYard(), getTimeSlot(), getSelectedDay());
     }
 }

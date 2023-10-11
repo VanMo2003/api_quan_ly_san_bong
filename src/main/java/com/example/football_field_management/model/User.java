@@ -11,8 +11,8 @@ import java.util.Objects;
 @Table(name = "user")
 public class User {
     @Id
-    @Column(name = "username")
-    private String username;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "permission")
     private boolean permission;
@@ -25,18 +25,18 @@ public class User {
     }
 
     public User(String username, boolean permission, String nameUser, String phoneNumber) {
-        this.username = username;
+        this.email = username;
         this.permission = permission;
         this.nameUser = nameUser;
         this.phoneNumber = phoneNumber;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String username) {
+        this.email = username;
     }
 
     public boolean isPermission() {
@@ -68,18 +68,18 @@ public class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return isPermission() == user.isPermission() && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getNameUser(), user.getNameUser()) && Objects.equals(getPhoneNumber(), user.getPhoneNumber());
+        return isPermission() == user.isPermission() && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getNameUser(), user.getNameUser()) && Objects.equals(getPhoneNumber(), user.getPhoneNumber());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), isPermission(), getNameUser(), getPhoneNumber());
+        return Objects.hash(getEmail(), isPermission(), getNameUser(), getPhoneNumber());
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "username='" + email + '\'' +
                 ", permission=" + permission +
                 ", nameUser='" + nameUser + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

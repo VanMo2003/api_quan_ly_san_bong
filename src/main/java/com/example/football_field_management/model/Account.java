@@ -11,8 +11,8 @@ import java.util.Objects;
 @Table(name = "account")
 public class Account {
     @Id
-    @Column(name = "username")
-    private String userName;
+    @Column(name = "email")
+    private String email;
     @Column(name = "password")
     private String password;
     @Column(name = "permission")
@@ -21,18 +21,18 @@ public class Account {
     public Account() {
     }
 
-    public Account(String userName, String password, boolean permission) {
-        this.userName = userName;
+    public Account(String email, String password, boolean permission) {
+        this.email = email;
         this.password = password;
         this.permission = permission;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String userName) {
+        this.email = userName;
     }
 
     public String getPassword() {
@@ -54,7 +54,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "userName='" + userName + '\'' +
+                "userName='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", permission=" + permission +
                 '}';
@@ -65,11 +65,11 @@ public class Account {
         if (this == o) return true;
         if (!(o instanceof Account)) return false;
         Account account = (Account) o;
-        return getUserName().equals(account.getUserName()) && getPassword().equals(account.getPassword());
+        return getEmail().equals(account.getEmail()) && getPassword().equals(account.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUserName(), getPassword());
+        return Objects.hash(getEmail(), getPassword());
     }
 }

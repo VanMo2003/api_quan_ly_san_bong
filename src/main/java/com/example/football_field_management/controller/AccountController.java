@@ -19,7 +19,7 @@ public class AccountController {
 
     @PostMapping("/login")
     public ResponseEntity<Object> getAccountByUsername(@RequestBody Account account){
-        Optional<Account> accountFound = repository.findById(account.getUserName());
+        Optional<Account> accountFound = repository.findById(account.getEmail());
 
         if (!accountFound.isPresent()){
             return new ResponseEntity<>("tài khoản hoặc mật khẩu không chính xác", HttpStatus.NOT_FOUND);
@@ -33,7 +33,7 @@ public class AccountController {
     }
     @PostMapping("")
     public ResponseEntity<Object> insertAccount(@RequestBody Account account){
-        Optional<Account> accountFound = repository.findById(account.getUserName());
+        Optional<Account> accountFound = repository.findById(account.getEmail());
 
         if (accountFound.isPresent()){
             return new ResponseEntity<>("tài khoản đã tồn tại", HttpStatus.BAD_REQUEST);
