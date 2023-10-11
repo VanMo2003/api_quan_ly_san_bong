@@ -4,16 +4,16 @@ public class UserInformation {
     private String nameUser;
     private String phoneNumber;
     private int timeSlot;
-    private String dataToday;
+    private String selectedDay;
 
     public UserInformation() {
     }
 
-    public UserInformation(String nameUser, String phoneNumber, int timeSlot, String dataToday) {
+    public UserInformation(String nameUser, String phoneNumber, int timeSlot, String selectedDay) {
         this.nameUser = nameUser;
         this.phoneNumber = phoneNumber;
         this.timeSlot = timeSlot;
-        this.dataToday = dataToday;
+        this.selectedDay = selectedDay;
     }
 
     public String getNameUser() {
@@ -40,12 +40,12 @@ public class UserInformation {
         this.timeSlot = timeSlot;
     }
 
-    public String getDataToday() {
-        return dataToday;
+    public String getSelectedDay() {
+        return selectedDay;
     }
 
-    public void setDataToday(String dataToday) {
-        this.dataToday = dataToday;
+    public void setSelectedDay(String selectedDay) {
+        this.selectedDay = selectedDay;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class UserInformation {
                 "nameUser='" + nameUser + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", timeSlot='" + timeSlot + '\'' +
-                ", dataToday='" + dataToday + '\'' +
+                ", dataToday='" + selectedDay + '\'' +
                 '}';
     }
 }

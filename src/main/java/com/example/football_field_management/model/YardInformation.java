@@ -5,16 +5,16 @@ public class YardInformation {
 	String nameUser;
 	String phoneNumber;
 	int timeSlot;
-	String dataToday;
+	String selectedDay;
 	public YardInformation(){
 
 	}
 
-	public YardInformation(String nameUser, String phoneNumber, int timeSlot, String dataToday) {
+	public YardInformation(String nameUser, String phoneNumber, int timeSlot, String selectedDay) {
 		this.nameUser = nameUser;
 		this.phoneNumber = phoneNumber;
 		this.timeSlot = timeSlot;
-		this.dataToday = dataToday;
+		this.selectedDay = selectedDay;
 	}
 
 	public String getNameUser() {
@@ -41,12 +41,12 @@ public class YardInformation {
 		this.timeSlot = timeSlot;
 	}
 
-	public String getDataToday() {
-		return dataToday;
+	public String getSelectedDay() {
+		return selectedDay;
 	}
 
-	public void setDataToday(String dataToday) {
-		this.dataToday = dataToday;
+	public void setSelectedDay(String selectedDay) {
+		this.selectedDay = selectedDay;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class YardInformation {
 				"nameUser='" + nameUser + '\'' +
 				", phoneNumber='" + phoneNumber + '\'' +
 				", timeSlot='" + timeSlot + '\'' +
-				", dataToday='" + dataToday + '\'' +
+				", dataToday='" + selectedDay + '\'' +
 				'}';
 	}
 
@@ -63,11 +63,11 @@ public class YardInformation {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof YardInformation that)) return false;
-		return Objects.equals(getNameUser(), that.getNameUser()) && Objects.equals(getPhoneNumber(), that.getPhoneNumber()) && Objects.equals(getTimeSlot(), that.getTimeSlot()) && Objects.equals(getDataToday(), that.getDataToday());
+		return getTimeSlot() == that.getTimeSlot() && Objects.equals(getNameUser(), that.getNameUser()) && Objects.equals(getPhoneNumber(), that.getPhoneNumber()) && Objects.equals(getSelectedDay(), that.getSelectedDay());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getNameUser(), getPhoneNumber(), getTimeSlot(), getDataToday());
+		return Objects.hash(getNameUser(), getPhoneNumber(), getTimeSlot(), getSelectedDay());
 	}
 }

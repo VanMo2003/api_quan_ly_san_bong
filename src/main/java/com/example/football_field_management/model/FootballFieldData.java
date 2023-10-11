@@ -16,9 +16,9 @@ public class FootballFieldData {
 	@Column(name = "time_slot")
 	int timeSlot;
 	@Column(name = "price")
-	String price;
+	double price;
 
-	public FootballFieldData(String nameFootballField, int timeSlot, String price) {
+	public FootballFieldData(String nameFootballField, int timeSlot, double price) {
 		this.nameFootballField = nameFootballField;
 		this.timeSlot = timeSlot;
 		this.price = price;
@@ -40,11 +40,11 @@ public class FootballFieldData {
 		this.timeSlot = timeSlot;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -61,11 +61,11 @@ public class FootballFieldData {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof FootballFieldData that)) return false;
-		return Objects.equals(getNameFootballField(), that.getNameFootballField()) && Objects.equals(getTimeSlot(), that.getTimeSlot()) && Objects.equals(getPrice(), that.getPrice());
+		return id == that.id && getTimeSlot() == that.getTimeSlot() && Double.compare(that.getPrice(), getPrice()) == 0 && Objects.equals(getNameFootballField(), that.getNameFootballField());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getNameFootballField(), getTimeSlot(), getPrice());
+		return Objects.hash(id, getNameFootballField(), getTimeSlot(), getPrice());
 	}
 }

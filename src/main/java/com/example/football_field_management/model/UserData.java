@@ -21,19 +21,31 @@ public class UserData {
     private String phoneNumber;
     @Column(name = "time_slot")
     private int timeSlot;
-    @Column(name = "data_today")
-    private String dataToday;
+    @Column(name = "selected_day")
+    private String selectedDay;
+    @Column(name = "price")
+    private double price;
 
     public UserData() {
     }
 
-    public UserData(String nameFootballField, int numberYard, String nameUser, String phoneNumber, int timeSlot, String dataToday) {
+    public UserData(Long id, String nameFootballField, int numberYard, String nameUser, String phoneNumber, int timeSlot, String selectedDay, double price) {
+        this.id = id;
         this.nameFootballField = nameFootballField;
         this.numberYard = numberYard;
         this.nameUser = nameUser;
         this.phoneNumber = phoneNumber;
         this.timeSlot = timeSlot;
-        this.dataToday = dataToday;
+        this.selectedDay = selectedDay;
+        this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNameFootballField() {
@@ -76,23 +88,33 @@ public class UserData {
         this.timeSlot = timeSlot;
     }
 
-    public String getDataToday() {
-        return dataToday;
+    public String getSelectedDay() {
+        return selectedDay;
     }
 
-    public void setDataToday(String dataToday) {
-        this.dataToday = dataToday;
+    public void setSelectedDay(String selectedDay) {
+        this.selectedDay = selectedDay;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "UserData{" +
-                "nameFootballField='" + nameFootballField + '\'' +
+                "id=" + id +
+                ", nameFootballField='" + nameFootballField + '\'' +
                 ", numberYard=" + numberYard +
                 ", nameUser='" + nameUser + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", timeSlot='" + timeSlot + '\'' +
-                ", dataToday='" + dataToday + '\'' +
+                ", timeSlot=" + timeSlot +
+                ", dataToday='" + selectedDay + '\'' +
+                ", price=" + price +
                 '}';
     }
 
@@ -100,11 +122,11 @@ public class UserData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserData userData)) return false;
-        return getNumberYard() == userData.getNumberYard() && getTimeSlot() == userData.getTimeSlot() && Objects.equals(id, userData.id) && Objects.equals(getNameFootballField(), userData.getNameFootballField()) && Objects.equals(getNameUser(), userData.getNameUser()) && Objects.equals(getPhoneNumber(), userData.getPhoneNumber()) && Objects.equals(getDataToday(), userData.getDataToday());
+        return getNumberYard() == userData.getNumberYard() && getTimeSlot() == userData.getTimeSlot() && Double.compare(userData.getPrice(), getPrice()) == 0 && Objects.equals(getId(), userData.getId()) && Objects.equals(getNameFootballField(), userData.getNameFootballField()) && Objects.equals(getNameUser(), userData.getNameUser()) && Objects.equals(getPhoneNumber(), userData.getPhoneNumber()) && Objects.equals(getSelectedDay(), userData.getSelectedDay());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getNameFootballField(), getNumberYard(), getNameUser(), getPhoneNumber(), getTimeSlot(), getDataToday());
+        return Objects.hash(getId(), getNameFootballField(), getNumberYard(), getNameUser(), getPhoneNumber(), getTimeSlot(), getSelectedDay(), getPrice());
     }
 }

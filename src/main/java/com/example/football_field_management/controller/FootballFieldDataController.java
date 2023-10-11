@@ -41,7 +41,7 @@ public class FootballFieldDataController {
                 int finalI = i;
                 userDataList.forEach(userData -> {
                     if (userData.getNumberYard() == finalI) {
-                        userInformationList.add(new UserInformation(userData.getNameUser(), userData.getPhoneNumber(), userData.getTimeSlot(), userData.getDataToday()));
+                        userInformationList.add(new UserInformation(userData.getNameUser(), userData.getPhoneNumber(), userData.getTimeSlot(), userData.getSelectedDay()));
                     }
                 });
 
@@ -74,7 +74,7 @@ public class FootballFieldDataController {
                     userInformation.setNameUser(userData.getNameUser());
                     userInformation.setPhoneNumber(userData.getPhoneNumber());
                     userInformation.setTimeSlot(userData.getTimeSlot());
-                    userInformation.setDataToday(userData.getDataToday());
+                    userInformation.setSelectedDay(userData.getSelectedDay());
 
                     userInformationList.add(userInformation);
                 }

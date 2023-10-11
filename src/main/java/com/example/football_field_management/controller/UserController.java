@@ -27,6 +27,7 @@ public class UserController {
         }
     }
 
+
     @PostMapping("")
     public ResponseEntity<Object> insertUser(@RequestBody User user){
         return new ResponseEntity<>(repository.save(user), HttpStatus.OK);

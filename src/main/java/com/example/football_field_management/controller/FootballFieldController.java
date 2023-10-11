@@ -27,7 +27,7 @@ public class FootballFieldController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<Object> getAccountByUsername(@PathVariable String username){
+    public ResponseEntity<Object> getInformationByUsername(@PathVariable String username){
         Optional<ManageInformation> manageInformationFound = manageInformationRepository.findById(username.trim());
 
 
@@ -45,6 +45,13 @@ public class FootballFieldController {
         }else {
             return new ResponseEntity<>("không tìm thấy tài khoản", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<Object> getInformationByNameFootballField(@RequestParam(value = "nameFootballField") String nameFootballField){
+        ManageInformation manageInformationFound = manageInformationRepository.findByNameFootballField(nameFootballField);
+
+        return new ResponseEntity<>(manageInformationFound, HttpStatus.OK);
     }
 
     @PostMapping("")
