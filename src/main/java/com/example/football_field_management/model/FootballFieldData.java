@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "football_field")
+@Table(name = "football_field_data")
 public class FootballFieldData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -60,7 +60,8 @@ public class FootballFieldData {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (!(o instanceof FootballFieldData that)) return false;
+		if (!(o instanceof FootballFieldData)) return false;
+		FootballFieldData that = (FootballFieldData) o;
 		return id == that.id && getTimeSlot() == that.getTimeSlot() && Double.compare(that.getPrice(), getPrice()) == 0 && Objects.equals(getNameFootballField(), that.getNameFootballField());
 	}
 

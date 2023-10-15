@@ -6,8 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "manage_information")
-public class ManageInformation {
+@Table(name = "football_field_information")
+public class FootballFieldInformation {
     @Id
     @Column(name = "email")
     private String email;
@@ -15,19 +15,19 @@ public class ManageInformation {
     private boolean permission;
     @Column(name = "name_football_field")
     private String nameFootballField;
-    @Column(name = "name_manage")
-    private String nameManage;
+    @Column(name = "name_manager")
+    private String nameManager;
     @Column(name = "total_yards")
     private int totalYards;
 
-    public ManageInformation() {
+    public FootballFieldInformation() {
     }
 
-    public ManageInformation(String username, boolean permission, String nameFootballField, String nameManage, int totalYards) {
+    public FootballFieldInformation(String username, boolean permission, String nameFootballField, String nameManager, int totalYards) {
         this.email = username;
         this.permission = permission;
         this.nameFootballField = nameFootballField;
-        this.nameManage = nameManage;
+        this.nameManager = nameManager;
         this.totalYards = totalYards;
     }
 
@@ -55,12 +55,12 @@ public class ManageInformation {
         this.nameFootballField = nameFootballField;
     }
 
-    public String getNameManage() {
-        return nameManage;
+    public String getNameManager() {
+        return nameManager;
     }
 
-    public void setNameManage(String nameManage) {
-        this.nameManage = nameManage;
+    public void setNameManager(String nameManager) {
+        this.nameManager = nameManager;
     }
 
     public int getTotalYards() {
@@ -73,11 +73,11 @@ public class ManageInformation {
 
     @Override
     public String toString() {
-        return "ManageInformation{" +
+        return "FootballFieldInformation{" +
                 "username='" + email + '\'' +
                 ", permission=" + permission +
                 ", nameFootballField='" + nameFootballField + '\'' +
-                ", nameManage='" + nameManage + '\'' +
+                ", nameManage='" + nameManager + '\'' +
                 ", totalYards=" + totalYards +
                 '}';
     }

@@ -121,7 +121,8 @@ public class UserData {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserData userData)) return false;
+        if (!(o instanceof UserData)) return false;
+        UserData userData = (UserData) o;
         return getNumberYard() == userData.getNumberYard() && getTimeSlot() == userData.getTimeSlot() && Objects.equals(getNameFootballField(), userData.getNameFootballField()) && Objects.equals(getSelectedDay(), userData.getSelectedDay());
     }
 

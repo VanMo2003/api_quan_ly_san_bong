@@ -26,31 +26,32 @@ public class RevenueController {
 
 	Calendar calendar = Calendar.getInstance();
 
-	@GetMapping("/revenue/{nameFootballField}")
-	ResponseEntity<Object> getAllRevenue(@PathVariable String nameFootballField){
+//	@GetMapping("/revenue/{nameFootballField}")
+//	ResponseEntity<Object> getAllRevenue(@PathVariable String nameFootballField){
+//
+//		double revenue = userDataRepository.getALlRevenue(nameFootballField);
+//
+//
+//
+//		return new ResponseEntity<>(revenue, HttpStatus.OK);
+//	}
 
-		double revenue = userDataRepository.getALlRevenue(nameFootballField);
-
-
-
-		return new ResponseEntity<>(revenue, HttpStatus.OK);
-	}
-
-	@GetMapping("/revenueToday/{nameFootballField}")
-	ResponseEntity<Object> getRevenueByToday(@PathVariable String nameFootballField){
-		Optional<Double> revenueDay = userDataRepository.getRevenueByToDay(nameFootballField, dtf.format(now));
-
-		if (revenueDay.isPresent())
-			return new ResponseEntity<>(revenueDay, HttpStatus.OK);
-		else
-			return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
-
-	}
+//	@GetMapping("/revenueToday/{nameFootballField}")
+//	ResponseEntity<Object> getRevenueByToday(@PathVariable String nameFootballField){
+//		Optional<Double> revenueDay = userDataRepository.getRevenueByToDay(nameFootballField, dtf.format(now));
+//
+//		if (revenueDay.isPresent())
+//			return new ResponseEntity<>(revenueDay, HttpStatus.OK);
+//		else
+//			return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+//
+//	}
 
 	@GetMapping("/revenueOfWeek/{nameFootballField}")
 	ResponseEntity<Object> getRevenueOfWeek(@PathVariable String nameFootballField){
 
-		LocalDateTime firstDayOfWeek = now.minusDays(calendar.get(Calendar.DAY_OF_WEEK) - 2);
+		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) == 1?8:calendar.get(Calendar.DAY_OF_WEEK);
+		LocalDateTime firstDayOfWeek = now.minusDays(dayOfWeek - 2);
 
 		String revenueOfWeek = "";
 
