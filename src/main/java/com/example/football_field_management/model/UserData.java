@@ -2,7 +2,6 @@ package com.example.football_field_management.model;
 
 
 import jakarta.persistence.*;
-
 import java.util.Objects;
 
 @Entity

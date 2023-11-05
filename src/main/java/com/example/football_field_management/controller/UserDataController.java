@@ -1,14 +1,12 @@
 package com.example.football_field_management.controller;
 
 import com.example.football_field_management.model.UserData;
-import com.example.football_field_management.repositories.FootballFieldInformationRepository;
 import com.example.football_field_management.repositories.UserDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
