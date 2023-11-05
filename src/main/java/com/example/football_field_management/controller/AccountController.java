@@ -16,6 +16,11 @@ public class AccountController {
     @Autowired
     private AccountRepository repository;
 
+
+    @GetMapping({"/", "/home", "/status"})
+    public String getStatus() {
+        return "Application is up and running";
+    }
     @PostMapping("/login")
     public ResponseEntity<Object> getAccountByUsername(@RequestBody Account account){
         Optional<Account> accountFound = repository.findById(account.getEmail());
